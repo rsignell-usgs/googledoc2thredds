@@ -65,16 +65,17 @@ if len(feed.entry) > 0:
             print ncmlFile
             urlPath = string.replace(id,'.','/')
             datasetName = row.custom['runtitle'].text
+            runSummary = row.custom['runsummary'].text
             #print row.customdocs
             coveragetype = row.custom['coveragecontenttype'].text
             coveragevars = row.custom['variablesofinterestforcoveragetype'].text
             cdmdatatype = row.custom['cdmtype'].text
-            xml = datasetXML.datasetXML(ncmlFile, datasetName, urlPath, id,
+            xml = datasetXML.datasetXML(ncmlFile, datasetName, runSummary, urlPath, id,
                                         coveragetype, coveragevars, cdmdatatype)
             catalog = catalog + xml
         
     catalog = (catalog + footer).encode('utf-8')
-    f = open('/var/www/tomcat-threddsdev/content/thredds/inundation.xml','w')
+    f = open('/var/www/tomcat-threddsdev/content/thredds/inundation_googledoc.xml','w')
     f.write(catalog)
     f.close()
     os.system('touch /var/www/tomcat-threddsdev/webapps/thredds/WEB-INF/web.xml')

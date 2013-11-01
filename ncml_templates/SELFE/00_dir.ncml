@@ -1,0 +1,176 @@
+<!-- This NcML template aggregates a collection of SELFE output files and makes them UGRID Compliant-->
+<!-- See Unstructured Grid (UGRID) Conventions: https://github.com/ugrid-conventions -->
+<!-- 
+ ssh tomcat@testbedapps.sura.org
+[tomcat@testbedapps]$ cd /data/ftp/upload/Inundation/vims/selfe_tropical/runs/Ike
+[tomcat@testbedapps Ike]$ ls 3D_varied_roughness_windstress/00_dir.ncml
+3D_varied_roughness_windstress/00_dir.ncml
+[tomcat@testbedapps Ike]$ ls 3D_varied_roughness_windstress_with_wave/output
+1_hvel.nc           3_hvel.nc           5_hvel.nc           7_hvel.nc
+1_MeanPeriod.nc     3_MeanPeriod.nc     5_MeanPeriod.nc     7_MeanPeriod.nc
+1_PeakPeriod.nc     3_PeakPeriod.nc     5_PeakPeriod.nc     7_PeakPeriod.nc
+1_pwd.nc            3_pwd.nc            5_pwd.nc            7_pwd.nc
+1_SigWaveHeight.nc  3_SigWaveHeight.nc  5_SigWaveHeight.nc  7_SigWaveHeight.nc
+1_WaterLevel.nc     3_WaterLevel.nc     5_WaterLevel.nc     7_WaterLevel.nc
+2_hvel.nc           4_hvel.nc           6_hvel.nc           8_hvel.nc
+2_MeanPeriod.nc     4_MeanPeriod.nc     6_MeanPeriod.nc     8_MeanPeriod.nc
+2_PeakPeriod.nc     4_PeakPeriod.nc     6_PeakPeriod.nc     8_PeakPeriod.nc
+2_pwd.nc            4_pwd.nc            6_pwd.nc            8_pwd.nc
+2_SigWaveHeight.nc  4_SigWaveHeight.nc  6_SigWaveHeight.nc  8_SigWaveHeight.nc
+2_WaterLevel.nc     4_WaterLevel.nc     6_WaterLevel.nc     8_WaterLevel.nc
+-->
+<netcdf xmlns="http://www.unidata.ucar.edu/namespaces/netcdf/ncml-2.2">
+ <attribute name="title" type="string" value="SELFE - Ike - Ultralite - Variable Drag - Waves - 3D"/>
+ <attribute name="institution" type="string"
+  value="Virginia Institute of Marine Science -- http://web.vims.edu/physical/"/>
+ <attribute name="source" type="string"
+  value="SELFE run  (version v.vvv  compiled yyyy-mm-dd) for Hurricane Ike on the Ultralight mesh using variable drag, wind waves from WWM and 3D depth-averaged physics"/>
+ <attribute name="history" type="string" value="ncml aggregation of .../whole_domain/ datafiles"/>
+ <attribute name="references" type="string"
+  value="testbed.sura.org:/data/ftp/upload/Inundation/vims/selfe_tropical/runs/Ike/3D_varied_roughness_windstress_with_wave/Inundation_Model_Metadata_Template_v3_for_3D_windstress_sv_with_wave_Rita.docx"/>
+ <variable name="selfe_mesh" shape="" type="int">
+  <attribute name="cf_role" value="mesh_topology"/>
+  <attribute name="topology_dimension" type="int" value="2"/>
+  <attribute name="node_coordinates" value="x y"/>
+  <attribute name="face_node_connectivity" value="ele"/>
+ </variable>
+ <variable name="time">
+  <attribute name="units" value="seconds since 2005-09-18 00:00:00"/>
+  <attribute name="standard_name" value="time"/>
+ </variable>
+ <variable name="ele" shape="nface nele" type="int">
+  <attribute name="cf_role" value="face_node_connnectivity"/>
+  <attribute name="start_index" type="short" value="1"/>
+ </variable>
+ <variable name="x" shape="node" type="float">
+  <attribute name="units" value="degrees_east"/>
+ </variable>
+ <variable name="y" shape="node" type="float">
+  <attribute name="units" value="degrees_north"/>
+ </variable>
+ <variable name="depth" shape="node" type="float">
+  <attribute name="mesh" value="selfe_mesh"/>
+  <attribute name="location" value="node"/>
+  <attribute name="coordinates" value="y x"/>
+  <attribute name="units" value="m"/>
+  <attribute name="standard_name" value="depth_below_geoid"/>
+  <remove type="attribute" name="positive"/>
+ </variable>
+ <variable name="sigma" shape="sigma" type="float">
+  <attribute name="long_name" value="S coordinates at whole levels"/>
+  <attribute name="units" value="non-dimensional"/>
+  <attribute name="positive" value="up"/>
+ </variable>
+ <variable name="Cs" shape="sigma" type="float">
+  <attribute name="long_name" value="Function C(s) at whole levels"/>
+  <attribute name="units" value="non-dimensional"/>
+  <attribute name="positive" value="up"/>
+ </variable>
+ <variable name="elev" shape="time node" type="float">
+  <attribute name="long_name" value="free_surface_elevation"/>
+  <attribute name="standard_name" value="sea_surface_height_above_geoid"/>
+  <attribute name="missing_value" type="float" value="-999.00"/>
+  <attribute name="mesh" value="selfe_mesh"/>
+  <attribute name="location" value="node"/>
+  <attribute name="coordinates" value="y x"/>
+  <attribute name="units" value="m"/>
+ </variable>
+ <variable name="wwm_1" shape="time node" type="float">
+  <attribute name="long_name" value="significant_wave_height"/>
+  <attribute name="standard_name" value="sea_surface_wave_significant_height"/>
+  <attribute name="missing_value" type="float" value="-999.00"/>
+  <attribute name="mesh" value="selfe_mesh"/>
+  <attribute name="location" value="node"/>
+  <attribute name="coordinates" value="y x"/>
+  <attribute name="units" value="m"/>
+ </variable>
+ <variable name="wwm_3" shape="time node" type="float">
+  <attribute name="long_name" value="mean_period"/>
+  <attribute name="standard_name" value="sea_surface_wave_period_at_variance_spectral_density_mean"/>
+  <attribute name="missing_value" type="float" value="-999.00"/>
+  <attribute name="mesh" value="selfe_mesh"/>
+  <attribute name="location" value="node"/>
+  <attribute name="coordinates" value="y x"/>
+  <attribute name="units" value="s"/>
+ </variable>
+ <variable name="wwm_9" shape="time node" type="float">
+  <attribute name="long_name" value="peak_period"/>
+  <attribute name="standard_name"
+   value="sea_surface_wave_period_at_variance_spectral_density_maximum"/>
+  <attribute name="missing_value" type="float" value="-999.00"/>
+  <attribute name="mesh" value="selfe_mesh"/>
+  <attribute name="location" value="node"/>
+  <attribute name="coordinates" value="y x"/>
+  <attribute name="units" value="s"/>
+ </variable>
+ <variable name="wwm_15" shape="time node" type="float">
+  <attribute name="long_name" value="peak_direction"/>
+  <attribute name="standard_name"
+   value="sea_surface_wave_from_direction_at_variance_spectral_density_maximum"/>
+  <attribute name="missing_value" type="float" value="-999.00"/>
+  <attribute name="mesh" value="selfe_mesh"/>
+  <attribute name="location" value="node"/>
+  <attribute name="coordinates" value="y x"/>
+  <attribute name="units" value="degrees_east"/>
+ </variable>
+ <variable name="u" shape="time2 sigma node" type="float">
+  <attribute name="standard_name" value="barotropic_eastward_sea_water_velocity"/>
+  <attribute name="mesh" value="selfe_mesh"/>
+  <attribute name="location" value="node"/>
+  <attribute name="coordinates" value="y x"/>
+  <attribute name="units" value="m/s"/>
+ </variable>
+ <variable name="v" shape="time2 sigma node" type="float">
+  <attribute name="standard_name" value="barotropic_northward_sea_water_velocity"/>
+  <attribute name="mesh" value="selfe_mesh"/>
+  <attribute name="location" value="node"/>
+  <attribute name="coordinates" value="y x"/>
+  <attribute name="units" value="m/s"/>
+ </variable>
+ <aggregation type="union">
+  <netcdf xmlns="http://www.unidata.ucar.edu/namespaces/netcdf/ncml-2.2">
+   <aggregation dimName="time" type="joinExisting">
+    <scan
+     location="/data/ftp/upload/Inundation/vims/selfe_tropical/runs/Rita/3D_varied_roughness_windstress_with_wave/output/"
+     regExp=".*[0-9]{1}_WaterLevel\.nc$"/>
+   </aggregation>
+  </netcdf>
+  <netcdf xmlns="http://www.unidata.ucar.edu/namespaces/netcdf/ncml-2.2">
+   <aggregation dimName="time" type="joinExisting">
+    <scan
+     location="/data/ftp/upload/Inundation/vims/selfe_tropical/runs/Rita/3D_varied_roughness_windstress_with_wave/output/"
+     regExp=".*[0-9]{1}_SigWaveHeight\.nc$"/>
+   </aggregation>
+  </netcdf>
+  <netcdf xmlns="http://www.unidata.ucar.edu/namespaces/netcdf/ncml-2.2">
+   <aggregation dimName="time" type="joinExisting">
+    <scan
+     location="/data/ftp/upload/Inundation/vims/selfe_tropical/runs/Rita/3D_varied_roughness_windstress_with_wave/output/"
+     regExp=".*[0-9]{1}_MeanPeriod\.nc$"/>
+   </aggregation>
+  </netcdf>
+  <netcdf xmlns="http://www.unidata.ucar.edu/namespaces/netcdf/ncml-2.2">
+   <aggregation dimName="time" type="joinExisting">
+    <scan
+     location="/data/ftp/upload/Inundation/vims/selfe_tropical/runs/Rita/3D_varied_roughness_windstress_with_wave/output/"
+     regExp=".*[0-9]{1}_PeakPeriod\.nc$"/>
+   </aggregation>
+  </netcdf>
+  <netcdf xmlns="http://www.unidata.ucar.edu/namespaces/netcdf/ncml-2.2">
+   <aggregation dimName="time" type="joinExisting">
+    <scan
+     location="/data/ftp/upload/Inundation/vims/selfe_tropical/runs/Rita/3D_varied_roughness_windstress_with_wave/output/"
+     regExp=".*[0-9]{1}_pwd\.nc$"/>
+   </aggregation>
+  </netcdf>
+  <netcdf xmlns="http://www.unidata.ucar.edu/namespaces/netcdf/ncml-2.2">
+   <dimension name="time2" orgName="time"/>
+   <variable name="time2" orgName="time"/>
+   <aggregation dimName="time" type="joinExisting">
+    <scan
+     location="/data/ftp/upload/Inundation/vims/selfe_tropical/runs/Rita/3D_varied_roughness_windstress_with_wave/output/"
+     regExp=".*[0-9]{1}_hvel\.nc$"/>
+   </aggregation>
+  </netcdf>
+ </aggregation>
+</netcdf>

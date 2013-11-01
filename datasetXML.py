@@ -4,7 +4,7 @@ Created on Mon Feb 20 08:52:32 2012
 
 @author: rsignell
 """
-import ncml
+import ncml2 as ncml
 import StringIO
 
 institutions = {
@@ -20,6 +20,7 @@ institutions = {
 
 def datasetXML(ncmlFile='c:/rps/xml/thredds/testbedapps_dev/00_dir.ncml',
     datasetName='Foo',
+    runSummary='Foo',
     urlPath='foo1/foo2/foo3',
     datasetID='foo1:foo2:foo3',
     coverage_type='modelResult', #acrosby
@@ -32,6 +33,7 @@ def datasetXML(ncmlFile='c:/rps/xml/thredds/testbedapps_dev/00_dir.ncml',
         ncmlFile.addDatasetAttribute('id',datasetID)
         ncmlFile.addDatasetAttribute('cdm_data_type',cdm_data_type)
         ncmlFile.addDatasetAttribute('title',datasetName)
+        ncmlFile.addDatasetAttribute('summary',runSummary)
         ncmlFile.addDatasetAttribute('institution', institutions[datasetID.split(".")[1]])
         
         #acrosby

@@ -1,0 +1,58 @@
+<netcdf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.unidata.ucar.edu/namespaces/netcdf/ncml-2.2 http://www.unidata.ucar.edu/schemas/thredds/InvCatalog.1.0.3.xsd"
+ xmlns="http://www.unidata.ucar.edu/namespaces/netcdf/ncml-2.2">
+ <attribute name="Conventions" value="CF-1.0"/>
+
+ <variable name="adcirc_mesh">
+  <remove type="attribute" name="standard_name"/>
+  <attribute name="cf_role" value="mesh_topology"/>
+  <remove type="attribute" name="dimension"/>
+  <attribute name="topology_dimension" type="int" value="2"/>
+ </variable>
+
+ <variable name="element">
+  <remove type="attribute" name="standard_name"/>
+  <attribute name="cf_role" value="face_node_connectivity"/>
+ </variable>
+ <aggregation type="union">
+  <netcdf
+   location="/data/ftp/upload/Inundation/und/adcirc_tropical/runs/Hurricane_Ike_3D_final_run_with_waves/Output/fort.45.nc"/>
+  <netcdf
+   location="/data/ftp/upload/Inundation/und/adcirc_tropical/runs/Hurricane_Ike_3D_final_run_with_waves/Output/fort.63.nc"/>
+  <netcdf
+   location="/data/ftp/upload/Inundation/und/adcirc_tropical/runs/Hurricane_Ike_3D_final_run_with_waves/Output/fort.64.nc"/>
+  <netcdf
+   location="/data/ftp/upload/Inundation/und/adcirc_tropical/runs/Hurricane_Ike_3D_final_run_with_waves/Output/fort.73.nc"/>
+  <netcdf
+   location="/data/ftp/upload/Inundation/und/adcirc_tropical/runs/Hurricane_Ike_3D_final_run_with_waves/Output/fort.74.nc"/>
+  <netcdf
+   location="/data/ftp/upload/Inundation/und/adcirc_tropical/runs/Hurricane_Ike_3D_final_run_with_waves/Output/maxele.63.nc"/>
+  <netcdf
+   location="/data/ftp/upload/Inundation/und/adcirc_tropical/runs/Hurricane_Ike_3D_final_run_with_waves/Output/maxrs.63.nc"/>
+  <netcdf
+   location="/data/ftp/upload/Inundation/und/adcirc_tropical/runs/Hurricane_Ike_3D_final_run_with_waves/Output/maxvel.63.nc"/>
+  <netcdf
+   location="/data/ftp/upload/Inundation/und/adcirc_tropical/runs/Hurricane_Ike_3D_final_run_with_waves/Output/maxwvel.63.nc"/>
+  <netcdf
+   location="/data/ftp/upload/Inundation/und/adcirc_tropical/runs/Hurricane_Ike_3D_final_run_with_waves/Output/minpr.63.nc"/>
+  <netcdf
+   location="/data/ftp/upload/Inundation/und/adcirc_tropical/runs/Hurricane_Ike_3D_final_run_with_waves/Output/swan_DIR.63.nc"/>
+  <netcdf
+   location="/data/ftp/upload/Inundation/und/adcirc_tropical/runs/Hurricane_Ike_3D_final_run_with_waves/Output/swan_DIR_max.63.nc"/>
+  <netcdf
+   location="/data/ftp/upload/Inundation/und/adcirc_tropical/runs/Hurricane_Ike_3D_final_run_with_waves/Output/swan_HS.63.nc"/>
+  <netcdf
+   location="/data/ftp/upload/Inundation/und/adcirc_tropical/runs/Hurricane_Ike_3D_final_run_with_waves/Output/swan_HS_max.63.nc"/>
+  <netcdf
+   location="/data/ftp/upload/Inundation/und/adcirc_tropical/runs/Hurricane_Ike_3D_final_run_with_waves/Output/swan_TMM10.63.nc"/>
+  <netcdf
+   location="/data/ftp/upload/Inundation/und/adcirc_tropical/runs/Hurricane_Ike_3D_final_run_with_waves/Output/swan_TMM10_max.63.nc"/>
+  <netcdf
+   location="/data/ftp/upload/Inundation/und/adcirc_tropical/runs/Hurricane_Ike_3D_final_run_with_waves/Output/swan_TPS.63.nc"/>
+  <netcdf
+   location="/data/ftp/upload/Inundation/und/adcirc_tropical/runs/Hurricane_Ike_3D_final_run_with_waves/Output/swan_TPS_max.63.nc"/>
+  <netcdf
+   location="/data/ftp/upload/Inundation/und/adcirc_tropical/runs/Hurricane_Ike_3D_final_run_with_waves/Output/rads.64.nc"
+  />
+ </aggregation>
+</netcdf>

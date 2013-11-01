@@ -1,0 +1,14 @@
+    <netcdf xmlns="http://www.unidata.ucar.edu/namespaces/netcdf/ncml-2.2"
+     location="/data/ftp/upload/Inundation/uf/OWI_1.09_Ike_Galveston/Case_01/slosh-spatial-netcdf.nc">
+     <attribute name="wms-link" value="http://testbedapps.sura.org/ncWMS/wms"/>
+     <attribute name="wms-layer-prefix" value="slosh_ike_galveston_owi_wind_only"/>
+     <attribute name="title" value="SLOSH - IKE - Galveston - OWI Wind Only"/>
+     <attribute name="id" value="in.uf.slosh.ike.galveston.owi_wind_only"/>
+     <attribute name="naming_authority" value="noaa.ioos.testbed"/>
+     <attribute name="summary" value="Slosh for Ike in Galveston using OWI Wind Only"/>
+     <attribute name="creator_name" value="Justin Davis"/>
+     <attribute name="creator_email" value="davis@coastal.ufl.edu"/>
+     <attribute name="creator_url" value="http://www.coastal.ufl.edu"/>
+     <attribute name="cdm_data_type" value="Grid"/>
+     <remove type="attribute" name="program"/>
+      </netcdf>
